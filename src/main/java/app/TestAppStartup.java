@@ -1,8 +1,5 @@
 package app;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.IgniteException;
@@ -10,6 +7,10 @@ import org.apache.ignite.Ignition;
 import services.maintenance.common.MaintenanceService;
 import services.vehicles.common.Vehicle;
 import services.vehicles.common.VehicleService;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by dmagda on 1/6/17.
@@ -28,7 +29,8 @@ public class TestAppStartup {
      * @throws IgniteException If failed.
      */
     public static void main(String[] args) throws IgniteException {
-        Ignite ignite = Ignition.start("config/data-node-config.xml");
+        Ignition.setClientMode(true);
+        Ignite ignite = Ignition.start("config/client-node-config.xml");
 
         System.out.println("Client node has connected to the cluster");
 
